@@ -1,7 +1,7 @@
 # Mobile-App-Penetration-Testing
 
 
-#Android Architecture
+# Android Architecture
 
 Android software contains an open-source Linux Kernel having collection of number of
 C/C++ libraries which are exposed through an application framework services.
