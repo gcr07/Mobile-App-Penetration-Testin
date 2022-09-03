@@ -138,6 +138,24 @@ from other components, whether the component belongs to the application or not
 
 >Para actividades y servicios, las intenciones definen la acción a realizar (por ejemplo, ver o enviar algo) y pueden especificar el URI de los datos utilizados en la acción, entre otras cosas que el componente iniciador necesita saber. Por ejemplo, una intención podría transmitir una solicitud de actividad para mostrar una imagen o abrir una página web. En algunos casos, debe iniciar una actividad para recibir un resultado. En este caso, la actividad también devuelve el resultado en un Intent. Por ejemplo, puede emitir una intención para que el usuario seleccione un contacto personal y se lo devuelva. La intención de devolución contiene un URI que apunta al contacto seleccionado.
 
+# Tipos de Dispositivos 
+
+Existen varios dispositivos desarrollados para Android y no todos tienen las mismas prestaciones y características. Para evitar que la aplicación se instale en dispositivos que no contienen las características que requiere la aplicación, es importante definir un perfil para los tipos de dispositivos admitidos por la aplicación. Debe declarar los requisitos del dispositivo y el software en el archivo de manifiesto. La mayoría de estas declaraciones son solo informativas y el sistema no las lee, pero los servicios externos como Google Play las leen para proporcionar un filtro a los usuarios cuando buscan estas aplicaciones para su dispositivo.
+
+
+> For example, if your app requires a camera and uses APIs introduced in Android 2.1 ( API
+level 7), you would need to declare those requirements in the manifest file as follows:
+
+```
+<manifest ... >
+<usesfeatureandroid:name="android.hardware.camera.any"android:required="true"/><usessdkandroid:minSdkVersion="7"android:targetSdkVersion="19"/> .
+..</manifest>
+
+```
+
+
+
+
 
 
 
