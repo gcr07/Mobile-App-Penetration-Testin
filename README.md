@@ -325,8 +325,63 @@ Three main types of the mobile apps are divided: Mobile Web Apps, Native (Pure n
 and Hybrid Apps
   
   
+## Mobile Web application,
+ 
+In fact, is the website opened in the gadget (smartphone or tablet)
+with the help of the mobile browser.
 
+ No offline capabilities support.
+• Limited functionality in the comparison with Hybrid and Native Apps. (no access to the
+file system and local resources).
+• Problems with redistribution: Google Play and App Store don’t support redistribution
+of the Mobile Web Apps.
+ 
+ 
+ ## Native App
+ 
+ Is the application, which has been developed specifically for one platform
+(Android, iOS, Tizen, Windows 10 M0bile, BlackBerry).
+ 
+ Some merits of the Native Apps:
+• Native app works offline.
+• It can use all features of its device.
+• Advanced user experience.
+• Push notifications can be used for users alert.
 
+ ## Hybrid App 
+ 
+ Is the mix of the Native App and Mobile Web App. It can be defined like mobile
+website content exposition in the application format.
+Some merits of the Hybrid Apps:
+• More cost effective in comparison to the Native App.
+• Easy distribution.
+• Embedded browser.
+• Device features.
+Some demerits of the Hybrid Apps:
+• It works not so fast as Native App.
+• Graphics are less accustomed to the OS in comparison to Native App.
+ 
+ Some demerits of the Native Apps:
+• Native Apps creation is expensive in comparison to the Mobile Web apps.
+• It requires high costs for the maintenance.
+ 
+ 
+
+# Testing
+ 
+ ## Emulador
+ 
+ De hecho, un emulador es el reemplazo del dispositivo original. Aunque puede ejecutar programas y aplicaciones en su dispositivo, no tiene la capacidad de modificarlos
+ 
+ ## Simulador
+ 
+ El simulador no replica el hardware del dispositivo, pero tiene la capacidad de configurar un entorno similar al del sistema operativo del dispositivo original.
+ 
+ ## Cloud-based testing of the mobile application
+ 
+ Probar aplicaciones móviles con herramientas basadas en la nube parece ser la opción óptima. Puede ayudarlo a superar las desventajas de los dispositivos y simuladores reales.
+ 
+ 
 
 
 
