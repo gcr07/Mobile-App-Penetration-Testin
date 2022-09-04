@@ -107,6 +107,33 @@ the application.
 • Separate app code features that allow you to optimize the behavior of a variety of
 device configurations.
 
+## app features ( o aka recursos imagenes videos musica etc)
+
+> Android apps are made up of more than just code — they require resources separate from the
+source code, such as images, audio files, and anything else related to the visual presentation of
+the app. For example, you need to define animations, menus, styles, colors, and the layout of
+activity UIs with XML files. Using application features makes it easy to update many features of
+the application without having to modify the code. Providing the alternate feature sets allows
+you to optimize the application for various device configurations such as different languages
+and screen sizes.
+
+> For every resource included in the Android project, the SDK programming tools define a
+unique integer ID that the programmer can use to reference the resource from application
+code or other resources defined in XML. For example, if the app contains an image file
+named logo.png(saved in the directory res/drawable/), the SDK tools will generate a feature
+code called R.drawable.logo. This code maps to an application-specific integer value, which
+you can use to query the image and insert it into your UI.
+
+> Android supports multiple qualifiersfor alternative resources. The qualifier is a short string
+added to the name of resource directories to define the device configuration on which these
+resources will be used. Another example: it is important to create different layouts for
+activities depending on the device's screen size and orientation. When the device screen is in
+portrait (vertical) orientation, a layout with vertical buttons can be useful, but when the screen
+is in landscape (horizontal) orientation, the buttons need to be aligned horizontally. To change
+the layout as per the orientation, you can define two different layouts and apply the
+appropriate qualifier to the directory name of each layout. Then the system automatically
+applies the proper layout as per the current device orientation.
+
 
 ## Application components
 
@@ -153,15 +180,151 @@ level 7), you would need to declare those requirements in the manifest file as f
 
 ```
 
+Every app project needs to have a file AndroidManifest.xml(with that exact name) at the root
+of the project's source set . The manifest file describes essential app information for the
+Android build tools, the Android operating system, and Google Play.
 
 
+***If you're using Android Studio to build the app, the manifest file is built for you, and most of
+the essential elements of the manifest are added during that build, particularly when
+using code templates .***
 
+## file resources
 
+### Package name and Application ID
 
+The root element of the manifest file requires an attribute for the application's package name
+(which typically corresponds to the project's directory structure, the Java namespace).
+For example, the following snippet shows the <manifest>root element with the package
+ 
+```
+  
+name "com.example.myapp":
+<?xml version="1.0" encoding="utf8"?><manifestxmlns:android="http://schemas.android.com/apk/res/android"package="com.e
+xample.myapp"android:versionCode="1"android:versionName="1.0"> ...</manifest>
 
+```
+  
+### application components ( Osea lo que va dentro del archivo manifest)
+  
+  
+  For each application component that is created in your application, you need to declare a
+corresponding XML element in the manifest file:
+  
+```
+• <activity> for each subclass of Activity.
+• <service> for each subclass of Service.
+• <receiver> for each subclass of BroadcastReceiver.
+• <provider> for each subclass of ContentProvider.
+  
+```
+  
+If you subclass any of these components without declaring it in the manifest file, the system
+will not be able to launch it.
 
+### Intent filters
+  
+Application activities, services, and broadcast receivers are enabled by intents . The intent is a
+message defined by an object Intentthat describes an action to be performed, including data
+used in actions, the category of component that will perform the action, and other
+instructions.
+  
+  
+### Icons and Labels
+  
+Several manifest elements have iconand attributes labelto display, respectively, a small icon
+and a text label to users for the corresponding application component.
+In all cases, the icon and label defined on a parent element become the default values icon
+for labelall child elements. For example, the icon and label defined on the
+  
+```
+element <application>are the default for all application components (like all activities).
+```
+  
+### permissions
+  
+Android apps need to ask for permission to access sensitive user data (like contacts and SMS)
+or certain system features (like camera and internet access). Each permission is identified by a
+unique label. For example, an application that needs to send SMS messages needs to have the
+following line in the manifest.
+  
+```
+<manifest ... ><usespermissionandroid:name="android.permission.SEND_SMS"/> ...</manifest>
+  
+```
+  
+> But regardless of which version of Android your app supports, you
+need to declare all permissions requests with an element <uses-permission>in the manifest. If
+the permission is granted, the app will be able to use the protected resources. Otherwise, the
+attempt to access these resources will fail.
+  
+  
+### device compatibility
+  
+The manifest file is also where you can declare what types of hardware or software resources
+the application requires and what types of devices it supports. The Google Play Store does not
+allow your app to be installed on devices that do not provide the required features or system
+version
+  
+### <uses-feature>
+  
+  Te dice si alguna funcion se puede o no correr en este dispoditivo.
+  
+  > The element allows you to declare the hardware and software resources that the application
+needs. For example, if your app is unable to perform basic functionality on a device that does
+not have a compass sensor, you can declare the compass sensor as mandatory with the
+following manifest tag: <uses-feature>
 
-
+ 
+ ### <uses-sdk>
+  
+> Each successive version of the platform often adds new APIs not available in the previous
+version. To indicate the minimum version supported by the application, the manifest must
+include the tag <uses-sdk>and the minSdkVersion.
+  
+Ejemplo de archivo Manifest 
+  
+  
+```
+  
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:versionCode="1"
+android:versionName="1.0"
+package="com.example.myapp">
+<!-- Beware that these values are overridden by the build.gradle file -->
+<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="26" />
+<application
+android:allowBackup="true"
+android:icon="@mipmap/ic_launcher"
+android:roundIcon="@mipmap/ic_launcher_round"
+android:label="@string/app_name"
+android:supportsRtl="true"
+android:theme="@style/AppTheme">
+<!-- This name is resolved to com.example.myapp.MainActivity
+based upon the package attribute -->
+<activity android:name=".MainActivity">
+<intent-filter>
+<action android:name="android.intent.action.MAIN" />
+<category android:name="android.intent.category.LAUNCHER" />
+</intent-filter>
+</activity>
+<activity
+android:name=".DisplayMessageActivity"
+android:parentActivityName=".MainActivity" />
+</application>
+</manifest>  
+  
+  
+```
+  
+# Tipos de Apps
+  
+Three main types of the mobile apps are divided: Mobile Web Apps, Native (Pure native) Apps,
+and Hybrid Apps
+  
+  
 
 
 
